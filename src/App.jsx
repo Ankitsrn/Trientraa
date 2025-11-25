@@ -1,6 +1,7 @@
     import React, { useState, useEffect, useRef } from 'react'
     import logo from '../trinetra.png'
     import Connect from './Connect'
+    import BrandSlider from './BrandSlider'
 
 // Navigation Component
 const Navigation = () => {
@@ -452,6 +453,7 @@ export default function App() {
       ) : (
         <>
           <Hero />
+          <BrandSlider />
           <Solutions />
           <TargetAudience />
           <Stats />
