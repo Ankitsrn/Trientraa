@@ -94,7 +94,7 @@ export default function Connect() {
                 {submitting ? 'Sending...' : 'Send'}
               </button>
               <button type="button" onClick={() => { setForm({ service: '', email: '', name: '', phone: '', website: '', message: '' }); setError(''); setSuccess(false) }} className="px-4 py-2 rounded-md border">Reset</button>
-              <div className="text-sm text-gray-500">We respect your privacy. No spam.</div>
+              <div className="text-sm text-gray-500">We respect your privacy.</div>
             </div>
           </form>
         </div>

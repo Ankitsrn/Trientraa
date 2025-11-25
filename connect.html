@@ -1,112 +1,15 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Connect with Trientraa</title>
-  <style>
-    body { font-family: Inter, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial; background: linear-gradient(180deg,#0f172a 0%, #111827 40%); color: #0f172a; margin:0; padding:40px; }
-    .card { max-width:760px; margin:40px auto; background:#fff; border-radius:12px; padding:28px; box-shadow:0 10px 30px rgba(2,6,23,0.6); }
-    h1 { margin:0 0 8px 0; font-size:24px; color:#0f172a }
-    p.lead { color:#374151; margin:0 0 18px 0 }
-    label { display:block; font-weight:600; margin-top:12px; color:#111827 }
-    select,input,textarea { width:100%; padding:10px 12px; margin-top:6px; border:1px solid #e5e7eb; border-radius:8px; font-size:15px }
-    textarea { min-height:120px; resize:vertical }
-    .row { display:flex; gap:12px }
-    .col { flex:1 }
-    .actions { margin-top:18px; display:flex; gap:12px; align-items:center }
-    .btn { background:linear-gradient(90deg,#6366f1,#7c3aed); color:white; border:none; padding:12px 18px; border-radius:10px; cursor:pointer; font-weight:700 }
-    .btn.ghost { background:#f3f4f6; color:#111827 }
-    .success { background:#ecfdf5; color:#065f46; padding:12px; border-radius:8px; margin-top:12px }
-    .error { color:#b91c1c; font-size:13px; margin-top:6px }
-    .small { font-size:13px; color:#6b7280 }
-  </style>
-</head>
-<body>
-  <div class="card">
-    <h1>Connect with Trientraa</h1>
-    <p class="lead">Tell us about your requirement and we’ll get back to you. Fields marked * are required.</p>
-
-    <form id="contactForm" novalidate>
-      <label for="service">Select Services*</label>
-      <select id="service" name="service">
-        <option value="">-- Choose a service --</option>
-        <option value="affiliate">Affiliate Marketing</option>
-        <option value="influencer">Influencer Marketing</option>
-        <option value="loyalty">Loyalty Programs</option>
-        <option value="mobile">Mobile OEM Advertising</option>
-        <option value="other">Other</option>
-      </select>
-
-      <label for="email">Email*</label>
-      <input id="email" name="email" type="email" placeholder="you@company.com" />
-
-      <div class="row">
-        <div class="col">
-          <label for="name">Name*</label>
-          <input id="name" name="name" type="text" placeholder="Your name" />
-        </div>
-        <div class="col">
-          <label for="phone">Phone</label>
-          <input id="phone" name="phone" type="tel" placeholder="+91 98765 43210" />
-        </div>
-      </div>
-
-      <label for="website">Website</label>
-      <input id="website" name="website" type="url" placeholder="https://yourwebsite.com" />
-
-      <label for="message">Message*</label>
-      <textarea id="message" name="message" placeholder="Tell us more about your project"></textarea>
-
-      <div id="formError" class="error" style="display:none"></div>
-      <div class="actions">
-        <button type="submit" class="btn">Send</button>
-        <button type="button" class="btn ghost" id="resetBtn">Reset</button>
-        <div class="small">We respect your privacy. No spam.</div>
-      </div>
-
-      <div id="successBox" class="success" style="display:none">Thanks — we received your message and will contact you soon.</div>
-    </form>
-  </div>
-
-  <script>
-    (function(){
-      const form = document.getElementById('contactForm')
-      const errorBox = document.getElementById('formError')
-      const successBox = document.getElementById('successBox')
-      const resetBtn = document.getElementById('resetBtn')
-
-      function showError(msg){ errorBox.textContent = msg; errorBox.style.display = 'block' }
-      function clearError(){ errorBox.textContent=''; errorBox.style.display='none' }
-
-      form.addEventListener('submit', function(e){
-        e.preventDefault()
-        clearError()
-        successBox.style.display = 'none'
-
-        const service = form.service.value.trim()
-        const email = form.email.value.trim()
-        const name = form.name.value.trim()
-        const message = form.message.value.trim()
-
-        if (!service) { showError('Please select a service.'); form.service.focus(); return }
-        if (!email) { showError('Please enter your email.'); form.email.focus(); return }
-        if (!name) { showError('Please enter your name.'); form.name.focus(); return }
-        if (!message) { showError('Please enter a message.'); form.message.focus(); return }
-
-        // Placeholder submission: no backend configured.
-        // Replace the following with a fetch() to your contact API endpoint.
-        try {
-          // Simulate success
-          successBox.style.display = 'block'
-          form.reset()
-        } catch (err) {
-          showError('Submission failed. Please try again later.')
-        }
-      })
-
-      resetBtn.addEventListener('click', function(){ form.reset(); clearError(); successBox.style.display='none' })
-    })()
-  </script>
-</body>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Connect — Trientraa</title>
+    <!-- Keep the same styles/plugins as index.html -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  </head>
+  <body class="bg-gray-50">
+    <div id="connect-root"></div>
+    <script type="module" src="/src/main-connect.jsx"></script>
+  </body>
 </html>
