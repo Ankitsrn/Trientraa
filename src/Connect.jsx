@@ -30,7 +30,7 @@ export default function Connect() {
     try {
       // Create FormData for Web3Forms
       const formData = new FormData()
-      formData.append("access_key", "f81b8c2f-ae07-4534-a7a8-e402a1e81c02")
+      formData.append("access_key", "3a5b7c34-a401-4106-97d0-21505a33b7a2")
       formData.append("service", form.service)
       formData.append("email", form.email)
       formData.append("name", form.name)
