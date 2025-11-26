@@ -28,11 +28,29 @@ export default function Connect() {
 
     setSubmitting(true)
     try {
-      // Placeholder: replace with real API endpoint if available
-      // await fetch('/api/contact', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(form) })
-      await new Promise(r => setTimeout(r, 600))
-      setSuccess(true)
-      setForm({ service: '', email: '', name: '', phone: '', website: '', message: '' })
+      // Create FormData for Web3Forms
+      const formData = new FormData()
+      formData.append("access_key", "f81b8c2f-ae07-4534-a7a8-e402a1e81c02")
+      formData.append("service", form.service)
+      formData.append("email", form.email)
+      formData.append("name", form.name)
+      formData.append("phone", form.phone)
+      formData.append("website", form.website)
+      formData.append("message", form.message)
+
+      const response = await fetch("https://api.web3forms.com/submit", {
+        method: "POST",
+        body: formData
+      })
+
+      const data = await response.json()
+
+      if (data.success) {
+        setSuccess(true)
+        setForm({ service: '', email: '', name: '', phone: '', website: '', message: '' })
+      } else {
+        setError('Submission failed. Please try again later.')
+      }
     } catch (err) {
       setError('Submission failed. Please try again later.')
     } finally {
@@ -45,7 +63,7 @@ export default function Connect() {
       <div className="max-w-3xl mx-auto w-full px-6">
         <div className="bg-white rounded-2xl shadow-lg p-8">
           <h2 className="text-2xl font-bold text-gray-900">Connect with Trientraa</h2>
-          <p className="text-sm text-gray-600 mt-1">Tell us about your requirement and we’ll get back to you. Fields marked * are required.</p>
+          <p className="text-sm text-gray-600 mt-1">Tell us about your requirement and we'll get back to you. Fields marked * are required.</p>
 
           <form onSubmit={handleSubmit} className="mt-6 space-y-4">
             <div>
@@ -90,7 +108,7 @@ export default function Connect() {
             {success && <div className="text-sm text-green-600">Thanks — we received your message and will contact you soon.</div>}
 
             <div className="flex items-center gap-3">
-              <button type="submit" disabled={submitting} className="inline-flex items-center px-6 py-2 rounded-md bg-gradient-to-r from-indigo-600 to-purple-600 text-white font-semibold">
+              <button type="submit" disabled={submitting} className="inline-flex items-center px-6 py-2 rounded-md bg-gradient-to-r from-indigo-600 to-purple-600 text-white font-semibold disabled:opacity-50 disabled:cursor-not-allowed">
                 {submitting ? 'Sending...' : 'Send'}
               </button>
               <button type="button" onClick={() => { setForm({ service: '', email: '', name: '', phone: '', website: '', message: '' }); setError(''); setSuccess(false) }} className="px-4 py-2 rounded-md border">Reset</button>

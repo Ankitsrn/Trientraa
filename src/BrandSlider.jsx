@@ -30,16 +30,20 @@ const brands = [
 
 export default function BrandSlider() {
   return (
-    <div style={{ width: '100%', padding: '12px 0' }} className="bg-white rounded-xl shadow-md">
+    <div
+      style={{ width: '100%', padding: '12px 0' }}
+      className="bg-white rounded-xl shadow-md"
+    >
       <Swiper
         slidesPerView={5}
-        spaceBetween={8}
+        spaceBetween={16}                 // smoother spacing
         loop={true}
-        autoplay={{
-          delay: 0,
-          disableOnInteraction: false
-        }}
-        speed={2500}
+          autoplay={{
+            delay: 1,                      // continuous motion
+            disableOnInteraction: false
+          }}
+          speed={700}                     // smoother & faster (was 2500)
+        allowTouchMove={false}           // removes drag jitter for smooth animation
         modules={[Autoplay]}
         className="brandSwiper"
         breakpoints={{
@@ -51,16 +55,27 @@ export default function BrandSlider() {
       >
         {brands.map((logo, index) => (
           <SwiperSlide key={index}>
-            <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', height: 100 }}>
+            <div
+              style={{
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                height: 100
+              }}
+            >
               <img
                 src={logo}
                 alt={`brand-${index}`}
-                style={{ maxWidth: '160px', height: '80px', objectFit: 'contain' }}
+                style={{
+                  maxWidth: '160px',
+                  height: '80px',
+                  objectFit: 'contain'
+                }}
               />
             </div>
           </SwiperSlide>
         ))}
       </Swiper>
     </div>
-  )
+  );
 }

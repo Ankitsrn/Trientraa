@@ -117,3 +117,9 @@ p{ color:var(--muted); }
   -webkit-text-fill-color: transparent;
   background-clip: text;
 }
+
+/* Brand slider smooth animation tweaks */
+.brandSwiper { overflow: hidden; }
+.brandSwiper .swiper-wrapper { transition-timing-function: linear !important; }
+.brandSwiper .swiper-slide { display: flex; align-items: center; justify-content: center; }
+.brandSwiper .swiper-slide img { transition: transform 0.25s ease; }
