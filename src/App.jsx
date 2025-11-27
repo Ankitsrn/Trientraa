@@ -18,15 +18,15 @@ const Navigation = () => {
     <nav className={`fixed w-full z-50 transition-all duration-300 bg-white shadow-lg`}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-20">
-          <div className="flex items-center">
+          <button onClick={() => (window.location.hash = '')} className="flex items-center cursor-pointer hover:opacity-80 transition-opacity">
             {/** Make brand text white on dark hero background, and dark when navbar becomes white on scroll. Show `trinetra.png` left of the brand text. */}
             <h1 className="flex items-center">
-              <img src={logo} alt="Gemini logo" className="w-10 h-10 mr-3 object-contain" />
+              <img src={logo} alt="Trientraa logo" className="w-10 h-10 mr-3 object-contain" />
               <span className={`text-2xl font-bold text-gray-900`}>
                 Trientraa Digital Solutions
               </span>
             </h1>
-          </div>
+          </button>
 
           <div className="hidden md:flex items-center space-x-8">
           <a href="#solutions" className="text-gray-700 hover:text-indigo-600 transition-colors font-medium">Solutions</a>
